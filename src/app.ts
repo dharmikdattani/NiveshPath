@@ -2,6 +2,7 @@ import Express from "express";
 import cors from "cors"
 import cookieParser from "cookie-parser";
 import errorHandler from "./middleware/errorHandler.middleware";
+import routes from "././routes/index.route"
 
 const app = Express()
 
@@ -13,6 +14,8 @@ app.use(cookieParser())
 app.get("/ping", (req, res) => {
     res.send("Endpoint is working")
 })
+
+app.use("/v1/api/", routes)
 
 app.use(errorHandler)
 

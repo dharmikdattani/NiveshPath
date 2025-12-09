@@ -7,7 +7,7 @@ import { ApiError } from "../utils/ApiError";
 declare global {
     namespace Express {
         interface Request {
-            user?: any; // You can replace 'any' with your User type
+            user?: any;
         }
     }
 }
