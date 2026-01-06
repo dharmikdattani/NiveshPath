@@ -72,4 +72,12 @@ const changePasswordSchema = Joi.object({
     }),
 })
 
-export { userSchema, loginValidationSchema, changePasswordSchema };
+const forgotPasswordSchema = Joi.object({
+    email: Joi.string().required().email().messages({
+        'string.string': 'Email must be a valid format',
+        'any.required': 'Email is required',
+        'string.email': 'Email must be a valid email address',
+    }),
+})
+
+export { userSchema, loginValidationSchema, changePasswordSchema, forgotPasswordSchema };

@@ -11,6 +11,11 @@ export interface IUser extends Document {
     profileImageUrl?: string;
     lastLogin?: Date;
     refreshToken: string;
+    emailOtp?: string | null;
+    emailOtpExpiry?: Date | null;
+    passwordResetToken?: string | null;
+    passwordResetExpires?: Date | null;
+    emailOtpVerified?: boolean;
     createdAt: Date;
     updatedAt: Date;
     isPasswordCorrect(password: string): Promise<boolean>;
@@ -51,6 +56,28 @@ const UserSchema = new Schema<IUser>(
         refreshToken: {
             type: String,
             required: false
+        },
+        emailOtp: {
+            type: String,
+            required: false,
+            default: null
+        },
+        emailOtpExpiry: {
+            type: Date,
+            required: false
+        },
+        passwordResetToken: {
+            type: String,
+            required: false,
+            default: null
+        },
+        passwordResetExpires: {
+            type: Date,
+            required: false
+        },
+        emailOtpVerified: {
+            type: Boolean,
+            default: false
         }
     },
     {
